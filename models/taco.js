@@ -5,7 +5,7 @@ const tacoSchema = new mongoose.Schema({
   name:{type:String, required:true},
   vegtables:String,
   meat:String,
-
+  image:String
 })
 
 const Taco = mongoose.model('Taco',tacoSchema)
