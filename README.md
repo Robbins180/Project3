@@ -1,3 +1,7 @@
 # Project3
 Mini project unit 3
-Noel Rodriguez
+  Contributors:
+  
+    Noel Rodriguez
+
+    Drew Robbins
