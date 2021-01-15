@@ -71,7 +71,7 @@ update = (event)=>{
       return (
          <div>
 
-          <h2>Whats on tuesdays menu</h2>
+          <h2>Whats n tuesdays menu</h2>
           <form id ="makeTaco" onSubmit={this.create} >
           <label htmlFor ="name">Taco:</label><br/>
           <input type="text" name="name"id="name"/><br/>
