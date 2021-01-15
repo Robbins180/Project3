@@ -1,13 +1,31 @@
 
-// class App extends React.Component {
-//
-//     render = () => {
-//       return (
-//          <div>
-//           <h3>App page is working</h3>
-//         </div>
-//       )
-//     }
-// }
-//
-// ReactDOM.render(<App></App>, document.querySelector('main'))
+class App extends React.Component {
+  state={
+    name: "",
+    vegtables: "",
+    meat: "",
+    image: ""
+
+  }
+
+    render = () => {
+      return (
+         <div>
+          <h2>Whats on the menu</h2>
+          <label htmlFor ="name">Taco:</label><br/>
+          <input type="text" name="name"id="name"/><br/>
+
+          <label htmlFor ="vegtables">vegtables:</label><br/>
+          <input type="text"  name="vegtables"id="vegtables"/><br/>
+
+          <label htmlFor ="meat">Meat:</label><br/>
+          <input type="text" name="meat"id="meat"/><br/>
+
+          <label htmlFor ="image">Image:</label><br/>
+          <input type="text" name="image"id="image"/><br/>
+        </div>
+      )
+    }
+}
+
+ReactDOM.render(<App></App>, document.querySelector('main'))
