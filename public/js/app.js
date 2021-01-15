@@ -114,6 +114,7 @@ class App extends React.Component {
                   <label htmlFor='name'>Name</label>
                   <br />
                   <input type='text' placeholder={taco.name} id='name' onChange={this.handleChange} />
+                  <br />
 
                 </form>
                 </details>
