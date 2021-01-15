@@ -34,7 +34,14 @@ tacos.put('/:id', (req, res) => {
   )
 })
 
-
+// Delete
+  tacos.delete('/:id', (req, res) => {
+    Taco.findByIdAndRemove(req.params.id, (err, deletedTacos) => {
+      Taco.find({}, (err, foundTacos) => {
+        res.json(foundTacos)
+      })
+    })
+  })
 
 
 
