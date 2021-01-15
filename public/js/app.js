@@ -11,7 +11,7 @@ class App extends React.Component {
     render = () => {
       return (
          <div>
-          <h2>Whats on the menu</h2>
+          <h2>Whats on tuesdays menu</h2>
           <label htmlFor ="name">Taco:</label><br/>
           <input type="text" name="name"id="name"/><br/>
 
