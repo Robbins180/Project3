@@ -1,12 +1,13 @@
 const express = require('express')
 const tacos = express.Router()
+const tacoSeed =require('../models/taco_seed.js')
 
 const Taco =  require('../models/taco.js')
 
 
 // Read
 tacos.get('/',(req,res) => {
-  Taco.get({}, (err,foundTacos) => {
+  Taco.find({}, (err,foundTacos) => {
     res.json(foundTacos)
   })
 })
@@ -33,7 +34,19 @@ tacos.put('/:id', (req, res) => {
     }
   )
 })
+//Seed
+tacos.get('/seed',(req,res) => {
+  Taco.insertMany(tacoSeed,(err,manyTacos) => {
+    res.redirect('/')
+  })
+})
 
+// Drop
+tacos.get('/drop',(req,res) => {
+  Taco.collection.drop()
+  res.redirect('/')
+
+})
 // Delete
   tacos.delete('/:id', (req, res) => {
     Taco.findByIdAndRemove(req.params.id, (err, deletedTacos) => {
