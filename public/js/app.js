@@ -116,6 +116,13 @@ class App extends React.Component {
                   <input type='text' placeholder={taco.name} id='name' onChange={this.handleChange} />
                   <br />
 
+                  <label htmlFor='image'>Image</label>
+                  <br />
+                  <input type='text'  placeholder={taco.image} id='image' onChange={this.handleChange} />
+                  <br />
+
+                  <input type='submit' id='updateBtn' value='Update Taco' />
+
                 </form>
                 </details>
                 </div>
