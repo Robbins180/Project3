@@ -17,6 +17,14 @@ class App extends React.Component{
         this.setState({ tacos: response.data, name:"",image:""})
       })
 }
+deleteTaco =(event) => {
+  axios.delete('/taco/'+ event.target.value)
+  .then((response) => {
+    this.setState({tacos: response.data})
+
+  })
+
+}
 componentDidMount =() => {
   axios.get('/taco').then((response) => {
     this.setState({
@@ -47,7 +55,11 @@ componentDidMount =() => {
              <li key={taco._id}>
               {taco.name}
               <img src= {taco.image} alt={taco.name}/>
+               <button value={taco._id} onClick={this.deleteTaco}>
+               DELETE
+               </button>
              </li>
+
            )
          })}
        </ul>
