@@ -17,6 +17,19 @@ class App extends React.Component{
         this.setState({ tacos: response.data, name:"",image:""})
       })
 }
+
+updateTaco = (event) => {
+  event.preventDefault()
+  const id = event.target.id
+  axios.put('/taco/' + id, this.state).then((response) => {
+    this.setState({
+      tacos: response.data,
+      name: '',
+      image: '',
+    })
+  })
+}
+
 deleteTaco =(event) => {
   axios.delete('/taco/'+ event.target.value)
   .then((response) => {
@@ -40,11 +53,13 @@ componentDidMount =() => {
        <form onSubmit={this.handleSubmit}>
          <label htmlFor= "name">Name</label>
           <input type="text" id="name"
-          onChange={this.handleChange}/>
+          onChange={this.handleChange}
+          value={this.state.name}/>
           <br/>
           <label htmlFor="image">Image</label>
            <input type="text" id="image"
-           onChange={this.handleChange}/>
+           onChange={this.handleChange}
+           value={this.state.image}/>
            <br/>
            <input type ="submit" value="Create Taco"/>
        </form>
@@ -58,6 +73,22 @@ componentDidMount =() => {
                <button value={taco._id} onClick={this.deleteTaco}>
                DELETE
                </button>
+               <details>
+                <summary>Add some flavor</summary>
+                <form id={taco._id}
+                onSubmit={this.updateTaco}>
+                <label htmlFor="name">Name</label>
+                <br/>
+                <input type="text" id="name" onChange={this.handleChange}/>
+                <label htmlFor="image">Image</label>
+                <br/>
+                <input type="text" id="image"
+                onChange={this.handleChange}/>
+
+                <br/>
+                <input type="submit" value="Update Taco"/>
+                </form>
+               </details>
              </li>
 
            )
