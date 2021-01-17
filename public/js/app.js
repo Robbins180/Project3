@@ -126,6 +126,8 @@ class App extends React.Component {
                 </form>
                 </details>
                 </div>
+
+                
                 </li>
               )
             })}
