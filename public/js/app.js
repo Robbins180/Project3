@@ -1,139 +1,207 @@
-// If else statment needed for boolean and checkboxes to be linked and data to be sent
-
-
-class App extends React.Component {
+class App extends React.Component{
   state={
-    name: "",
-    vegtables:Boolean,
-    meat:Boolean,
-    topping: Boolean,
-    image: "",
-    taco:[]
+                name:"",
+                image:"",
+                onion: false,
+                pepper:false,
+                tomato:false,
+                pork:false,
+                carnita:false,
+                shrimp:false,
+                sourcream:false,
+                guacamole:false,
+                salsa:false,
+                queso:false,
+                tacos:[]
   }
 
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.id]:event.target.value
-    })
-  }
 
+  handleChange =(event) => {
+     console.log(event.target.id, event.target.value);
+    if(event.target.id === "onion"){
+      console.log("issa work?");
+      this.setState({onion:true})
+    }else if(event.target.id === "pepper"){
+      this.setState({pepper:true})
 
-//Create
-  create = event => {
-    event.preventDefault();
-    axios
-    .post('/taco', this.state)
-    .then(response =>
-    this.setState({
-      tacos: response.data,
-      name:'',
-      image:'',
-      vegtables: Boolean,
-      meat: Boolean,
-      topping: Boolean,
+    }else if(event.target.id === "tomato"){
+      this.setState({tomato:true})
+
+    }else if(event.target.id ==="pork"){
+      this.setState({pork:true})
+
+    }else if(event.target.id === "carnita"){
+      this.setState({carnita:true})
+
+    }else if(event.target.id === "shrimp"){
+      this.setState({shrimp:true})
+
+    }else if(event.target.id ==="sourcream"){
+      this.setState({sourcream:true})
+
+    }else if(event.target.id === "guacamole"){
+      this.setState({guacamole:true})
+
+    }else if(event.target.id === "salsa"){
+      this.setState({salsa:true})
+
+    }else if(event.target.id ==="queso"){
+      this.setState({queso:true})
+
+    }else(this.setState({[event.target.id]:event.target.value,}))
+
+    }
+    handleSubmit=(event) => {
+      event.preventDefault()
+      axios
+      .post("/taco",this.state)
+      .then((response) => {
+        this.setState({ tacos: response.data, name:"",image:"",
+        vegtables:{onion:false,pepper:false,tomato:false}})
       })
-    )
-  }
+}
 
-// Delete
-  delete = event => {
-  axios.delete('/taco/' + event.target.value).then(response => {
-    this.setState({
-      taco: response.data
-      })
-    })
-  }
-
-
-  componentDidMount = () => {
-    axios.get("/taco").then((response) => {
-      this.setState({
-        taco: response.data,
-      })
-    })
-  }
-
-
-// Update
-  update = event => {
+updateTaco = (event) => {
   event.preventDefault()
   const id = event.target.id
-  axios.put('/taco/' + id, this.state).then(response => {
+  axios.put('/taco/' + id, this.state).then((response) => {
     this.setState({
-      taco: response.data,
+      tacos: response.data,
       name: '',
       image: '',
-      vegtables: Boolean,
-      meat: Boolean,
-      topping: Boolean,
-      })
     })
-  }
+  })
+}
 
+deleteTaco =(event) => {
+  axios.delete('/taco/'+ event.target.value)
+  .then((response) => {
+    this.setState({tacos: response.data})
 
-    render = () => {
-      return (
-      <div className='html'>
-        <h2>Whats on tuesdays menu</h2>
-        <div className='Menu'>
+  })
 
-        <form id ="makeTaco" onSubmit={this.create} >
-          <label htmlFor ="name">Taco:</label><br/>
-          <input type="text" name="name"id="name"     onChange={this.handleChange} value={this.state.name}/><br/>
+}
+componentDidMount =() => {
+  axios.get('/taco').then((response) => {
+    this.setState({
+      tacos:response.data,
+    })
+  })
 
-          <label htmlFor ="vegtables">Vegtables:</label><br/>
-          <input type="checkbox"  name="vegtables"id="vegtables"   onChange={this.handleChange} value={this.state.name}/><br/>
+}
+  render = () => {
+     return (
+       <div>
+       <h2>Create Taco</h2>
+       <form onSubmit={this.handleSubmit}>
+         <label htmlFor= "name">Name</label>
+          <input type="text" id="name"
+          onChange={this.handleChange}
+          value={this.state.name}/>
+          <br/>
+          <label htmlFor="image">Image</label>
+           <input type="text" id="image"
+           onChange={this.handleChange}
+           value={this.state.image}/>
+           <br/>
+           <details>
+             <summary>Vegtables</summary>
+             <label htmlFor="onion">onion</label>
+              <input type="checkbox" id="onion"
+              onChange={this.handleChange}
+              value={this.state.onion}/>
+              <br/>
+               <label htmlFor="pepper">pepper</label>
+              <input type="checkbox" id="pepper"
+              onChange={this.handleChange}
+              value={this.state.pepper}/>
+              <br/>
+               <label htmlFor="tomato">tomato</label>
+              <input type="checkbox" id="tomato"
+              onChange={this.handleChange}
+              value={this.state.tomato}/>
+              <br/>
+              </details>
+              <details>
+                <summary>Meats</summary>
+                <label htmlFor="pork">pork</label>
+                 <input type="checkbox" id="pork"
+                 onChange={this.handleChange}
+                 value={this.state.pork}/>
+                 <br/>
+                  <label htmlFor="carnita">carnita</label>
+                 <input type="checkbox" id="carnita"
+                 onChange={this.handleChange}
+                 value={this.state.carnita}/>
+                 <br/>
+                  <label htmlFor="shrimp">shrimp</label>
+                 <input type="checkbox" id="shrimp"
+                 onChange={this.handleChange}
+                 value={this.state.shrimp}/>
+                 <br/>
+                 </details>
+                 <details>
+                   <summary>Toppings</summary>
+                   <label htmlFor="sourcream">sourcream</label>
+                    <input type="checkbox" id="sourcream"
+                    onChange={this.handleChange}
+                    value={this.state.sourcream}/>
+                    <br/>
+                     <label htmlFor="guacamole">guacamole</label>
+                    <input type="checkbox" id="guacamole"
+                    onChange={this.handleChange}
+                    value={this.state.guacamole}/>
+                    <br/>
+                     <label htmlFor="salsa">salsa</label>
+                    <input type="checkbox" id="salsa"
+                    onChange={this.handleChange}
+                    value={this.state.salsa}/>
+                    <br/>
+                    <label htmlFor="queso">queso</label>
+                   <input type="checkbox" id="queso"
+                   onChange={this.handleChange}
+                   value={this.state.queso}/>
+                   <br/>
+                    </details>
 
-          <label htmlFor ="meat">Meat:</label><br/>
-          <input type="checkbox" name="meat"id="meat"
-          onChange={this.handleChange} value={this.state.name}/><br/>
+           <input type ="submit" value="Create Taco"/>
+       </form>
+       <h2>Tuesdays menu</h2>
+       <ul>
+         {this.state.tacos.map((taco) => {
+           return(
+             <li key={taco._id}>
+              {taco.name}
+              <img src= {taco.image} alt={taco.name}/>
+               <button value={taco._id} onClick={this.deleteTaco}>
+               DELETE
+               </button>
+               <details>
+                <summary>Add some flavor</summary>
+                <form id={taco._id}
+                onSubmit={this.updateTaco}>
+                <label htmlFor="name">Name</label>
+                <br/>
+                <input type="text" id="name" onChange={this.handleChange} />
+                <label htmlFor="image">Image</label>
+                <br/>
+                <input type="text" id="image"
+                onChange={this.handleChange} />
 
-          <label htmlFor ="image">Image:</label><br/>
-          <input type="text" name="image"id="image"/><br/>
-
-          <input type="submit" value='Add'/> <br/>
-        </form>
-        </div>
-
-        <h2>Taco Results</h2>
-
-          <ul>
-            {this.state.taco.map((taco) => {
-              return (
-                <li key={taco._id}>
-                {taco.name} <br />
-
-                <img src={taco.image} alt={taco.name} />
-
-                <div className='Edit feature'>
-                <details>
-                <summary>Make Changes</summary>
-                <form id={taco.id} onSubmit={this.update}>
-
-                  <label htmlFor='name'>Name</label>
-                  <br />
-                  <input type='text' placeholder={taco.name} id='name' onChange={this.handleChange} />
-                  <br />
-
-                  <label htmlFor='image'>Image</label>
-                  <br />
-                  <input type='text'  placeholder={taco.image} id='image' onChange={this.handleChange} />
-                  <br />
-
-                  <input type='submit' id='updateBtn' value='Update Taco' />
-
+                <br/>
+                <input type="submit" value="Update Taco"/>
                 </form>
-                </details>
-                </div>
-                </li>
-              )
-            })}
-          </ul>
+               </details>
+             </li>
 
-      </div>
-      )
-    }
-  } // Closing Tag to whole React Fn.
+           )
+         })}
+       </ul>
+       </div>
 
-ReactDOM.render(<App></App>, document.querySelector('main'))
+     )
+  }
+}
+
+ReactDOM.render(<App></App>,document.querySelector('main'))
