@@ -70,6 +70,7 @@ updateTaco = (event) => {
       tacos: response.data,
       name: '',
       image: '',
+      onion: false
     })
   })
 }
@@ -171,29 +172,28 @@ componentDidMount =() => {
        <ul>
          {this.state.tacos.map((taco) => {
            return(
-             <li key={taco._id}>
+             <div key={taco._id}>
               {taco.name}
               <img src= {taco.image} alt={taco.name}/>
                <button value={taco._id} onClick={this.deleteTaco}>
                DELETE
                </button>
-               <details>
-                <summary>Add some flavor</summary>
+
+
                 <form id={taco._id}
                 onSubmit={this.updateTaco}>
                 <label htmlFor="name">Name</label>
                 <br/>
                 <input type="text" id="name" onChange={this.handleChange} />
                 <label htmlFor="image">Image</label>
-                <br/>
                 <input type="text" id="image"
                 onChange={this.handleChange} />
 
                 <br/>
                 <input type="submit" value="Update Taco"/>
                 </form>
-               </details>
-             </li>
+
+             </div>
 
            )
          })}
