@@ -5,22 +5,20 @@ const tacoSchema = new mongoose.Schema({
 
   name:{ type: String, required:true },
 
-  vegtables: Boolean /*{ onion: Boolean,
-               peppers:Boolean,
-               tomatoe:Boolean
+  vegtables:{ onion:{type:Boolean, default:false},
+              pepper: {type:Boolean, default:false},
+               tomato: {type:Boolean, default:false}
 
-     }*/,
-  meat: Boolean/*{ steak:Boolean,
-          pork:Boolean,
-          carnitas:Boolean,
-          shrimp:Boolean
-  }*/,
-  topping:Boolean/*{ sourcream:Boolean,
-          guacamole:Boolean,
-          picodegajo:Boolean,
-          salsa:Boolean,
-          queso:Boolean
-  }*/,
+     },
+  meats:{  pork: {type:Boolean, default:false},
+          carnita:{type:Boolean, default:false},
+          shrimp:{type:Boolean, default:false},
+  },
+  toppings:{ sourcream:{type:Boolean, default:false},
+            guacamole:{type:Boolean, default:false},
+            salsa:{type:Boolean, default:false},
+            queso:{type:Boolean, default:false},
+  },
   image: String
 })
 
