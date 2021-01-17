@@ -1,30 +1,56 @@
 class App extends React.Component{
   state={
-    name:"",
-    image:"",
-    vegtables: { onion: false,
-                 pepper:false,
-                 tomato:false
-
-       },
-    meats:{  pork:false,
-            carnita:false,
-            shrimp:false
-    },
-    toppings:{ sourcream:false,
-              guacamole:false,
-              salsa:false,
-              queso:false
-    },
-    tacos:[]
+                name:"",
+                image:"",
+                onion: false,
+                pepper:false,
+                tomato:false,
+                pork:false,
+                carnita:false,
+                shrimp:false,
+                sourcream:false,
+                guacamole:false,
+                salsa:false,
+                queso:false,
+                tacos:[]
   }
 
 
 
   handleChange =(event) => {
-    this.setState({
-      [event.target.id]:event.target.value,
-    })
+     console.log(event.target.id, event.target.value);
+    if(event.target.id === "onion"){
+      console.log("issa work?");
+      this.setState({onion:true})
+    }else if(event.target.id === "pepper"){
+      this.setState({pepper:true})
+
+    }else if(event.target.id === "tomato"){
+      this.setState({tomato:true})
+
+    }else if(event.target.id ==="pork"){
+      this.setState({pork:true})
+
+    }else if(event.target.id === "carnita"){
+      this.setState({carnita:true})
+
+    }else if(event.target.id === "shrimp"){
+      this.setState({shrimp:true})
+
+    }else if(event.target.id ==="sourcream"){
+      this.setState({sourcream:true})
+
+    }else if(event.target.id === "guacamole"){
+      this.setState({guacamole:true})
+
+    }else if(event.target.id === "salsa"){
+      this.setState({salsa:true})
+
+    }else if(event.target.id ==="queso"){
+      this.setState({queso:true})
+
+    }else(this.setState({[event.target.id]:event.target.value,}))
+
     }
     handleSubmit=(event) => {
       event.preventDefault()
@@ -84,17 +110,17 @@ componentDidMount =() => {
              <label htmlFor="onion">onion</label>
               <input type="checkbox" id="onion"
               onChange={this.handleChange}
-              value={this.state.vegtables.onion}/>
+              value={this.state.onion}/>
               <br/>
                <label htmlFor="pepper">pepper</label>
               <input type="checkbox" id="pepper"
               onChange={this.handleChange}
-              value={this.state.vegtables.pepper}/>
+              value={this.state.pepper}/>
               <br/>
                <label htmlFor="tomato">tomato</label>
               <input type="checkbox" id="tomato"
               onChange={this.handleChange}
-              value={this.state.vegtables.tomato}/>
+              value={this.state.tomato}/>
               <br/>
               </details>
               <details>
@@ -102,17 +128,17 @@ componentDidMount =() => {
                 <label htmlFor="pork">pork</label>
                  <input type="checkbox" id="pork"
                  onChange={this.handleChange}
-                 value={this.state.meats.pork}/>
+                 value={this.state.pork}/>
                  <br/>
                   <label htmlFor="carnita">carnita</label>
                  <input type="checkbox" id="carnita"
                  onChange={this.handleChange}
-                 value={this.state.meats.carnita}/>
+                 value={this.state.carnita}/>
                  <br/>
                   <label htmlFor="shrimp">shrimp</label>
                  <input type="checkbox" id="shrimp"
                  onChange={this.handleChange}
-                 value={this.state.meats.shrimp}/>
+                 value={this.state.shrimp}/>
                  <br/>
                  </details>
                  <details>
@@ -120,22 +146,22 @@ componentDidMount =() => {
                    <label htmlFor="sourcream">sourcream</label>
                     <input type="checkbox" id="sourcream"
                     onChange={this.handleChange}
-                    value={this.state.toppings.sourcream}/>
+                    value={this.state.sourcream}/>
                     <br/>
                      <label htmlFor="guacamole">guacamole</label>
                     <input type="checkbox" id="guacamole"
                     onChange={this.handleChange}
-                    value={this.state.toppings.guacamole}/>
+                    value={this.state.guacamole}/>
                     <br/>
                      <label htmlFor="salsa">salsa</label>
                     <input type="checkbox" id="salsa"
                     onChange={this.handleChange}
-                    value={this.state.toppings.salsa}/>
+                    value={this.state.salsa}/>
                     <br/>
                     <label htmlFor="queso">queso</label>
                    <input type="checkbox" id="queso"
                    onChange={this.handleChange}
-                   value={this.state.toppings.queso}/>
+                   value={this.state.queso}/>
                    <br/>
                     </details>
 
