@@ -38,6 +38,25 @@ h1 {
   text-align: center;
 
 }
+body{
+  text-align: center;
+  font-family: 'Source Code Pro', monospace;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 2.5rem;
+}
+.main{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  width: 240px;
+  height: 300px;
+}
 
 #images {
   width: 120px;

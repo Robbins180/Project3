@@ -58,7 +58,7 @@ class App extends React.Component{
       .post("/taco",this.state)
       .then((response) => {
         this.setState({ tacos: response.data, name:"",image:"",
-        vegtables:{onion:false,pepper:false,tomato:false}})
+        onion:false,pepper:false,tomato:false})
       })
 }
 
@@ -70,6 +70,17 @@ updateTaco = (event) => {
       tacos: response.data,
       name: '',
       image: '',
+      onion: false,
+      pepper:false,
+      tomato:false,
+      pork:false,
+      carnita:false,
+      shrimp:false,
+      sourcream:false,
+      guacamole:false,
+      salsa:false,
+      queso:false,
+
     })
   })
 }
@@ -105,6 +116,7 @@ componentDidMount =() => {
            onChange={this.handleChange}
            value={this.state.image}/>
            <br/>
+            <details>
            <details>
              <summary>Vegtables</summary>
              <label htmlFor="onion">onion</label>
@@ -164,6 +176,8 @@ componentDidMount =() => {
                    value={this.state.queso}/>
                    <br/>
                     </details>
+                    </details>
+
 
            <input type ="submit" id='createBtn' value="Create Taco"/>
        </form>
@@ -171,16 +185,14 @@ componentDidMount =() => {
        <ul>
          {this.state.tacos.map((taco) => {
            return(
-             <li key={taco._id}>
+             <div key={taco._id}>
               {taco.name}
+
               <img src= {taco.image} id='images' alt={taco.name}/>
-               <button value={taco._id} onClick={this.deleteTaco} id='deleteBtn'>
-               DELETE
-               </button>
+
 
                <details>
-                <summary>Add some flavor</summary>
-                <form id={taco._id}
+              <form id={taco._id}
                 onSubmit={this.updateTaco}>
                 <label htmlFor="name">Name</label>
                 <br/>
@@ -189,12 +201,50 @@ componentDidMount =() => {
                 <br/>
                 <input type="text" id="image"
                 onChange={this.handleChange} />
-
                 <br/>
-                <input type="submit" id='updateBtn' value="Update Taco"/>
+
+                <label htmlFor="onion">Onion</label>
+                <input type="checkbox" id="onion"
+                onChange={this.handleChange} />
+                <label htmlFor="pepper">Pepper</label>
+                <input type="checkbox" id="pepper"
+                onChange={this.handleChange} />
+                <label htmlFor="tomato">Tomato</label>
+                <input type="checkbox" id="tomato"
+                onChange={this.handleChange} />
+                <br/>
+                <label htmlFor="pork">Pork</label>
+                <input type="checkbox" id="pork"
+                onChange={this.handleChange} />
+                <label htmlFor="carnita">Carnita</label>
+                <input type="checkbox" id="carnita"
+                onChange={this.handleChange} />
+                <label htmlFor="shrimp">Shrimp</label>
+                <input type="checkbox" id="shrimp"
+                onChange={this.handleChange} />
+                <br/>
+              <label htmlFor="sourcream">Sourcream</label>
+                <input type="checkbox" id="sourcream"
+                onChange={this.handleChange} />
+                <label htmlFor="guacamole">Guacamole</label>
+                <input type="checkbox" id="guacamole"
+                onChange={this.handleChange} />
+                <label htmlFor="salsa">Salsa</label>
+                <input type="checkbox" id="salsa"
+                onChange={this.handleChange} />
+                <br/>
+                <label htmlFor="queso">Queso</label>
+                <input type="checkbox" id="queso"
+                onChange={this.handleChange} />
+                 <br/>
+              <input type="submit" value="Update Taco"/>
+
                 </form>
-               </details>
-             </li>
+                  </details>
+                  <button value={taco._id} onClick={this.deleteTaco}>
+                  DELETE
+                  </button>
+             </div>
 
            )
          })}
