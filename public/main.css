@@ -1,0 +1,18 @@
+* {
+  background-color: rgb(255, 252, 233);
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+#images {
+  width: 120px;
+   height: 120px;
+   height: auto;
+   float: none;
+   margin: 3px;
+   padding: 3px;
+   border: 2px solid black;
+}
