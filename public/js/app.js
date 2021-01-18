@@ -179,14 +179,15 @@ componentDidMount =() => {
                     </details>
 
 
-           <input type ="submit" value="Create Taco"/>
+           <input type ="submit" id='createBtn' value="Create Taco"/>
        </form>
        <h2>Tuesdays menu</h2>
        <ul>
          {this.state.tacos.map((taco) => {
            return(
              <div key={taco._id}>
-              {taco.name}
+              <p>{taco.name}</p>
+              <br/>
 
               <img src= {taco.image} id='images' alt={taco.name}/>
 
@@ -237,11 +238,11 @@ componentDidMount =() => {
                 <input type="checkbox" id="queso"
                 onChange={this.handleChange} />
                  <br/>
-              <input type="submit" value="Update Taco"/>
+              <input type="submit" value="Update Taco" id='updateBtn'/>
 
                 </form>
                   </details>
-                  <button value={taco._id} onClick={this.deleteTaco}>
+                  <button value={taco._id} onClick={this.deleteTaco} id='deleteBtn'>
                   DELETE
                   </button>
              </div>
