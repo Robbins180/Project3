@@ -174,7 +174,9 @@ componentDidMount =() => {
            return(
              <div key={taco._id}>
               {taco.name}
-              <img src= {taco.image} id ='images'alt={taco.name}/>
+
+              <img src= {taco.image} id='images' alt={taco.name}/>
+
                <button value={taco._id} onClick={this.deleteTaco}>
                DELETE
                </button>
