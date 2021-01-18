@@ -165,7 +165,7 @@ componentDidMount =() => {
                    <br/>
                     </details>
 
-           <input type ="submit" value="Create Taco"/>
+           <input type ="submit" id='createBtn' value="Create Taco"/>
        </form>
        <h2>Tuesdays menu</h2>
        <ul>
@@ -174,9 +174,10 @@ componentDidMount =() => {
              <li key={taco._id}>
               {taco.name}
               <img src= {taco.image} id='images' alt={taco.name}/>
-               <button value={taco._id} onClick={this.deleteTaco}>
+               <button value={taco._id} onClick={this.deleteTaco} id='deleteBtn'>
                DELETE
                </button>
+
                <details>
                 <summary>Add some flavor</summary>
                 <form id={taco._id}
@@ -190,7 +191,7 @@ componentDidMount =() => {
                 onChange={this.handleChange} />
 
                 <br/>
-                <input type="submit" value="Update Taco"/>
+                <input type="submit" id='updateBtn' value="Update Taco"/>
                 </form>
                </details>
              </li>
