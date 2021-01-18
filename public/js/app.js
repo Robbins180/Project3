@@ -70,7 +70,7 @@ updateTaco = (event) => {
       tacos: response.data,
       name: '',
       image: '',
-      onion: false
+
     })
   })
 }
@@ -174,7 +174,7 @@ componentDidMount =() => {
            return(
              <div key={taco._id}>
               {taco.name}
-              <img src= {taco.image} alt={taco.name}/>
+              <img src= {taco.image} id ='images'alt={taco.name}/>
                <button value={taco._id} onClick={this.deleteTaco}>
                DELETE
                </button>
@@ -186,6 +186,7 @@ componentDidMount =() => {
                 <br/>
                 <input type="text" id="name" onChange={this.handleChange} />
                 <label htmlFor="image">Image</label>
+                <br/>
                 <input type="text" id="image"
                 onChange={this.handleChange} />
 
