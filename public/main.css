@@ -1,13 +1,14 @@
 :root {
   --ivory: #FFFCE9;
   --light-brown: #c4b7a6;
-  --dark-brown: #4f3222;
+  --dark-brown: #421F02;
   --amber: #FBBC05;
   --green: #DDFFDD;
 
 }
 
 * {
+  color: var(--dark-brown);
   background-color: rgb(255, 252, 233);
   text-align: center;
   font-family: 'Source Code Pro', monospace;
@@ -17,15 +18,16 @@
 }
 
 body {
- border-top-style: dotted;
+ border-top-style: dotted ;
   border-left-style: dotted;
   border-right-style: dotted;
   border-bottom-style: dotted;
-  /* border: 2px solid black */
-
+  border-color: var(--dark-brown);
+  border
 }
 
 h1 {
+  color: var(--dark-brown);
   text-align: center;
   border: 2px solid black ;
   background-color: var(--green);
@@ -61,36 +63,19 @@ h1 {
     transition-duration: 0.4s;
     padding: 8px 40px;
     border-radius: 45%;
-    border: 2px
-    font-size: 14px;
+    font-size: 18px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 #createBtn:hover {
-  background-color:orange; /* color */
+  background-color: orange;
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-
-
-#name {
-  text-align: center;
-
-}
-
-
-/* body{
-  text-align: center;
-  font-family: 'Source Code Pro', monospace;
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 2.5rem;
-/* } */
-
-
 p {
-
+  font-size: 25px;
+  margin-bottom: auto;
 }
 
 #images {
@@ -100,7 +85,7 @@ p {
    float: none;
    margin: 3px;
    padding: 3px;
-   border: 3px solid black;
+   border: 4px solid black;
    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
@@ -127,7 +112,7 @@ p {
   transition-duration: 0.4s;
   padding: 8px 40px;
   border-radius: 45%;
-  font-size: 14px;
+  font-size: 18px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
