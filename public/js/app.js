@@ -198,6 +198,7 @@ componentDidMount =() => {
                 <label htmlFor="name">Name</label>
                 <br/>
                 <input type="text" id="name" onChange={this.handleChange} />
+                <br/>
                 <label htmlFor="image">Image</label>
                 <br/>
                 <input type="text" id="image"
